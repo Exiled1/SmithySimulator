@@ -1,57 +1,55 @@
 extends Node2D
 
-var hookVelocity := 0
-var hookAcceleration := .1
-var hookDeceleration := .2
-var maxVelocity := 6.0
-var bounce := .6
-
+var hookVelocity :float = 0.0
+@export var hookAcceleration := .07
+@export var hookDeceleration := .12
+@export var maxVelocity := 2.5
+@export var bounce := .6
+var fish = preload("res://Minigames/FurnaceMinigame/fish.tscn")
 var fishable = true
-func _process(delta: float):
-# Called when the node enters the scene tree for the first time.
-	var bar_top = $Top.global_position
-	var bar_bottom = $Bottom.global_position
-	var fish := $Fish as Fish
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready():
+	spawn_easy()
+#	fish = $Fish
 	
-#	fish.max_position = $FishingColumn/Top.position.y
-#	fish.min_position = $FishingColumn/Bottom.position.y
 	
-	# Hopefully this code slows down the hook as we go up with the primary
-	# action.
+	
+
+func _process(delta):
 	if Input.is_action_pressed("primary_action"):
 		if hookVelocity > -maxVelocity:
 			hookVelocity -= hookAcceleration
 	else:
 		if hookVelocity < maxVelocity:
 			hookVelocity += hookDeceleration
-	# Don't make the hook movement instant.
-	if Input.is_action_just_pressed("primary_action"):
-		hookVelocity -= .5
+			
+	if (Input.is_action_just_pressed("primary_action")):
+		hookVelocity -= .2
+		
 	var target = $Hook.position.y + hookVelocity
-	if (target >= $FishingColumn/Top.position.y):
+	if (abs(target) <= abs($Bottom.position.y)): # This is code to detect if the target is below the bounds. Its negative because the whole damn thing is upside down.
 		hookVelocity *= -bounce
-	elif (target <= $FishingColumn/Bottom.position.y + 38):
+	elif (abs(target) >= abs($Top.position.y)): # 28 is the # of pixels from the top to the center of the hook. Fml.
 		hookVelocity = 0
-		$Hook.position.y = $FishingColumn/Bottom.position.y + 38
+		$Hook.position.y = $Top.position.y
 	else:
 		$Hook.position.y = target
-	
+		
 	# Adjust Value
 	if (fishable == false):
-		if (len($Hook/Area2D.get_overlapping_areas()) > 0):
-			$Node2D/Progress.value += 125 * delta
-			if ($Node2D/Progress.value >= 999):
+		if (len($Hook/FishChecker.get_overlapping_areas()) > 0):
+			$Progress.value += 125 * delta
+			if ($Progress.value >= 999):
 				caught_fish()
 		else:
-			$Node2D/Progress.value -= 100 * delta
-			if ($Node2D/Progress.value <= 0):
+			$Progress.value -= 100 * delta
+			if ($Progress.value <= 0):
 				lost_fish()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _ready():
-	
-	pass
+
+
 
 func caught_fish():
 	$Fish.destroy()
@@ -63,8 +61,33 @@ func caught_fish():
 	
 func lost_fish():
 	$Fish.destroy()
+	print("Should happen rn")
 #	$Message.text = "Next time!"
 #	$MessageTimer.set_wait_time(3);
 #	$MessageTimer.start()
 #	$Progress.value = 0
 	fishable = true
+
+
+
+func add_fish(min_d, max_d, move_speed, move_time):
+	var f = fish.instantiate()
+	f.position = Vector2(0, -143.75)
+#	fish.position = Vector2(0, -143.75) # -143.75 cuz thats the center of the fuckin thing. I dont want to figure out the distance, so be careful changing the size of the fishing minigame.
+	# You'll have to do it again.
+	f.upper_boundary = $Top.position.y
+	f.lower_boundary = $Bottom.position.y
+
+	f.min_distance = min_d
+	f.max_distance = max_d
+	f.movement_speed = move_speed
+	f.movement_time = move_time
+	
+	add_child(f)
+	$Progress.value = 200
+	fishable = false
+
+func spawn_easy():
+	if (fishable):
+		add_fish(10, 40, 8, 3)
+		fishable = false

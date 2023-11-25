@@ -1,23 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbdm81ww008lg"]
+[gd_scene load_steps=8 format=3 uid="uid://dbdm81ww008lg"]
 
 [ext_resource type="Script" path="res://Minigames/FurnaceMinigame/furnace_minigame.gd" id="1_55ad2"]
 [ext_resource type="Texture2D" uid="uid://b5hwp3sljg0t7" path="res://Assets/Hook.png" id="1_k015u"]
 [ext_resource type="Texture2D" uid="uid://cq613mhf36iac" path="res://Assets/Fishing-Column.png" id="2_gabty"]
-[ext_resource type="PackedScene" uid="uid://bjuejci2rmpde" path="res://Minigames/FurnaceMinigame/fish.tscn" id="3_7hxpj"]
 [ext_resource type="Texture2D" uid="uid://cidpkiho1qcfy" path="res://Assets/Progress-Empty.png" id="5_hw15c"]
 [ext_resource type="Texture2D" uid="uid://y6sjdf426i01" path="res://Assets/Progress-Bar.png" id="6_iouve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wd7n"]
-size = Vector2(12, 29.6939)
+size = Vector2(8, 22.224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyjfs"]
 size = Vector2(20, 22.5807)
 
 [node name="FurnaceMinigame" type="Node2D"]
-position = Vector2(12, 265)
+position = Vector2(580.625, 328)
 script = ExtResource("1_55ad2")
+hookDeceleration = 0.1
 
 [node name="Hook" type="Node2D" parent="."]
+position = Vector2(0, -19)
 
 [node name="Sprite2D" type="Sprite2D" parent="Hook"]
 texture = ExtResource("1_k015u")
@@ -25,41 +26,44 @@ texture = ExtResource("1_k015u")
 [node name="FishChecker" type="Area2D" parent="Hook"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/FishChecker"]
-position = Vector2(0, -0.1875)
 scale = Vector2(1, 1.22)
 shape = SubResource("RectangleShape2D_5wd7n")
 
-[node name="Fish" parent="." instance=ExtResource("3_7hxpj")]
-visible = false
-position = Vector2(0, -125)
-
 [node name="Top" type="Area2D" parent="."]
-position = Vector2(0, -261.915)
+position = Vector2(0, -264)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+visible = false
 scale = Vector2(1.04, 0.155)
 shape = SubResource("RectangleShape2D_jyjfs")
 
 [node name="Bottom" type="Area2D" parent="."]
-position = Vector2(0, 19.95)
+position = Vector2(0, -19)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
-position = Vector2(0, -0.200012)
+visible = false
 scale = Vector2(1.04, 0.155)
 shape = SubResource("RectangleShape2D_jyjfs")
 
 [node name="FishingColumn" type="Sprite2D" parent="."]
-position = Vector2(0, -121)
+position = Vector2(-0.0513306, -141.25)
+scale = Vector2(1.00702, 1.00877)
 texture = ExtResource("2_gabty")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(16.97, -0.5)
-
-[node name="Progress" type="TextureProgressBar" parent="Node2D"]
-offset_left = -4.91998
-offset_top = -263.0
-offset_right = 35.08
-offset_bottom = 22.0
+[node name="Progress" type="TextureProgressBar" parent="."]
+offset_left = 10.0287
+offset_top = -284.5
+offset_right = 50.0287
+offset_bottom = 0.5
+max_value = 1000.0
+page = 1.0
 fill_mode = 3
 texture_under = ExtResource("5_hw15c")
 texture_progress = ExtResource("6_iouve")
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+position = Vector2(15, 120)

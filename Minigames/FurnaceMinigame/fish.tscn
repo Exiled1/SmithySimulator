@@ -14,7 +14,7 @@ script = ExtResource("1_ru8i0")
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_rvrke")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="FishSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_uspmy")
 
 [node name="MoveTimer" type="Timer" parent="."]
