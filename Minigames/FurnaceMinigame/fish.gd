@@ -3,22 +3,26 @@ class_name Fish extends Node2D
 @export var movement_speed = 4
 @export var movement_time = 1
 
-@export var min_distance = 100
-@export var max_distance = 200
+@export var min_distance = 20
+@export var max_distance = 150
 
 # Pretty sure these are what handle the fish being between two points LOL.
-@export var min_position = 20
-@export var max_position = 290
+# It is.
+@export var lower_boundary = 0
+@export var upper_boundary = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	plan_move()
 	
+	
 func plan_move():
-	var target = randf_range(min_position, max_position)
+	var target = randf_range(lower_boundary, upper_boundary)
+#	var target = upper_boundary 
 	
 	while (abs(self.position.y - target) < min_distance or abs(self.position.y - target) > max_distance):
-		target = randf_range(min_position, max_position)
+#		target = upper_boundary
+		target = randf_range(lower_boundary, upper_boundary)
 		
 	move(Vector2(self.position.x, target))
 

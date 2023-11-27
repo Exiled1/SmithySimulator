@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5hwp3sljg0t7"
-path="res://.godot/imported/Hook.png-a253f205bd370f0fc51d825699e501cf.ctex"
+uid="uid://cq613mhf36iac"
+path="res://.godot/imported/Fishing-Column.png-e4dc9db8614ce51da0cb638f2b8b47f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Hook.png"
-dest_files=["res://.godot/imported/Hook.png-a253f205bd370f0fc51d825699e501cf.ctex"]
+source_file="res://Assets/ImageAssets/Fishing-Column.png"
+dest_files=["res://.godot/imported/Fishing-Column.png-e4dc9db8614ce51da0cb638f2b8b47f2.ctex"]
 
 [params]
 

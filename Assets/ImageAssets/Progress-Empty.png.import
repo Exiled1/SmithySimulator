@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq613mhf36iac"
-path="res://.godot/imported/Fishing-Column.png-9052ac6321016b9fd7708cdd76e3a507.ctex"
+uid="uid://cidpkiho1qcfy"
+path="res://.godot/imported/Progress-Empty.png-d4672e2a7b7aceb0a6c5a10cd14bec76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fishing-Column.png"
-dest_files=["res://.godot/imported/Fishing-Column.png-9052ac6321016b9fd7708cdd76e3a507.ctex"]
+source_file="res://Assets/ImageAssets/Progress-Empty.png"
+dest_files=["res://.godot/imported/Progress-Empty.png-d4672e2a7b7aceb0a6c5a10cd14bec76.ctex"]
 
 [params]
 
