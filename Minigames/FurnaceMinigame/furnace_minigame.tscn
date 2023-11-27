@@ -15,55 +15,66 @@ size = Vector2(20, 22.5807)
 [node name="FurnaceMinigame" type="Node2D"]
 position = Vector2(580.625, 328)
 script = ExtResource("1_55ad2")
-hookDeceleration = 0.1
 
-[node name="Hook" type="Node2D" parent="."]
-position = Vector2(0, -19)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -0.400024
+offset_top = 0.000274658
+offset_right = 34.6
+offset_bottom = 287.0
+theme_override_constants/separation = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Hook"]
+[node name="Control2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(21.275, 287.685)
+layout_mode = 2
+
+[node name="Node2D" type="Node2D" parent="HBoxContainer/Control2"]
+
+[node name="Hook" type="Node2D" parent="HBoxContainer/Control2/Node2D"]
+unique_name_in_owner = true
+position = Vector2(10.6, 263.464)
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/Control2/Node2D/Hook"]
+position = Vector2(-2.95639e-05, 0)
 texture = ExtResource("2_cdikh")
 
-[node name="FishChecker" type="Area2D" parent="Hook"]
+[node name="FishChecker" type="Area2D" parent="HBoxContainer/Control2/Node2D/Hook"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/FishChecker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/Control2/Node2D/Hook/FishChecker"]
+position = Vector2(-2.95639e-05, 0)
 scale = Vector2(1, 1.22)
 shape = SubResource("RectangleShape2D_5wd7n")
 
-[node name="Top" type="Area2D" parent="."]
-position = Vector2(0, -264)
+[node name="Top" type="Area2D" parent="HBoxContainer/Control2/Node2D"]
+unique_name_in_owner = true
+position = Vector2(10.6, 20.8289)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/Control2/Node2D/Top"]
 visible = false
 scale = Vector2(1.04, 0.155)
 shape = SubResource("RectangleShape2D_jyjfs")
 
-[node name="Bottom" type="Area2D" parent="."]
-position = Vector2(0, -19)
+[node name="Bottom" type="Area2D" parent="HBoxContainer/Control2/Node2D"]
+unique_name_in_owner = true
+position = Vector2(10.6, 265.98)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/Control2/Node2D/Bottom"]
 visible = false
 scale = Vector2(1.04, 0.155)
 shape = SubResource("RectangleShape2D_jyjfs")
 
-[node name="FishingColumn" type="Sprite2D" parent="."]
-position = Vector2(-0.0513306, -141.25)
+[node name="FishingColumn" type="Sprite2D" parent="HBoxContainer/Control2/Node2D"]
+position = Vector2(10.6, 143.75)
 scale = Vector2(1.00702, 1.00877)
 texture = ExtResource("3_hiaig")
 
-[node name="Progress" type="TextureProgressBar" parent="."]
-offset_left = 10.0287
-offset_top = -284.5
-offset_right = 50.0287
-offset_bottom = 0.5
+[node name="FishingProgress" type="TextureProgressBar" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 max_value = 1000.0
 page = 1.0
 fill_mode = 3
 texture_under = ExtResource("4_01n06")
 texture_progress = ExtResource("5_jjfjt")
 metadata/_edit_use_anchors_ = true
-
-[node name="Node2D" type="Node2D" parent="."]
-visible = false
-position = Vector2(15, 120)

@@ -11,11 +11,15 @@ class_name Fish extends Node2D
 @export var lower_boundary = 0
 @export var upper_boundary = 200
 
+@onready var _animated_sprite = $AnimatedSprite2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	plan_move()
-	
-	
+
+func _process(delta):
+	_animated_sprite.play("default")
+
 func plan_move():
 	var target = randf_range(lower_boundary, upper_boundary)
 #	var target = upper_boundary 
@@ -36,6 +40,7 @@ func move(target):
 
 func destroy():
 	get_parent().remove_child(self)
+	_animated_sprite.stop()
 	queue_free()
 	
 func timeout():

@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://0c7s3b07aum7"]
+
+[ext_resource type="PackedScene" uid="uid://v4mcpvatdf6x" path="res://Assets/Locations/d1/forge_iteration1.gltf" id="1_qklwy"]
+[ext_resource type="PackedScene" uid="uid://dbdm81ww008lg" path="res://Minigames/FurnaceMinigame/furnace_minigame.tscn" id="2_0yev0"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="forge_iteration1" parent="." instance=ExtResource("1_qklwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.282261, 0, -0.35126)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-0.00867322, 0.104521, 0.994485, -0.00162921, -0.994523, 0.10451, 0.999961, -0.000713781, 0.008796, 9.07003, 4.08781, -0.220313)
+light_energy = 0.14
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 2)
+light_color = Color(0.901961, 0.654902, 0.282353, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -3.29469)
+light_color = Color(0.901961, 0.654902, 0.282353, 1)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39186, 2, -3.29469)
+light_color = Color(0.901961, 0.654902, 0.282353, 1)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39186, 2, 1.51765)
+light_color = Color(0.901961, 0.654902, 0.282353, 1)
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(31.745, 288.345)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.8725
+offset_top = -144.173
+offset_right = 15.8725
+offset_bottom = 144.173
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="FurnaceMinigame" parent="Control" instance=ExtResource("2_0yev0")]
+position = Vector2(0.197632, 0.509796)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.903351, -0.189013, 0.385009, 0, 0.897659, 0.440691, -0.428903, -0.398098, 0.810901, -1.55037, 1.06874, 2.29515)
+fov = 100.313

@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://feg8r2d4ngf6"]
+
+[ext_resource type="Script" path="res://Minigames/AnvilMinigame/AnvilMinigame.gd" id="1_q7et4"]
+[ext_resource type="Texture2D" uid="uid://np62v3s8hkiq" path="res://Minigames/AnvilMinigame/pointer.png" id="2_jleyk"]
+[ext_resource type="Texture2D" uid="uid://bltcxk7prsboq" path="res://Minigames/AnvilMinigame/GreenBackground.png" id="3_4qr4b"]
+[ext_resource type="Texture2D" uid="uid://cq2y5x174rl3b" path="res://Minigames/AnvilMinigame/OrangeBackground.png" id="4_4hq8n"]
+[ext_resource type="Texture2D" uid="uid://3ing4ixoma4v" path="res://Minigames/AnvilMinigame/RedBackground.png" id="5_al2bx"]
+[ext_resource type="Texture2D" uid="uid://xmoriuojxmw" path="res://Minigames/AnvilMinigame/GameBackground.png" id="6_knlbj"]
+
+[sub_resource type="Animation" id="Animation_5lpr0"]
+resource_name = "Slider"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4.24366, 39.2281), Vector2(311.707, 39.4264)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdl3h"]
+_data = {
+"Slider": SubResource("Animation_5lpr0")
+}
+
+[node name="AnvilMinigame" type="Node2D"]
+script = ExtResource("1_q7et4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 315.0
+offset_bottom = 32.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 0.324936
+offset_top = -28.0803
+offset_right = 315.325
+offset_bottom = -1.08026
+value = 23.32
+show_percentage = false
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(157.525, 15.9214)
+scale = Vector2(0.655, 0.655)
+texture = ExtResource("6_knlbj")
+region_enabled = true
+region_rect = Rect2(16, 96, 480, 48)
+
+[node name="BadHit" type="Sprite2D" parent="."]
+position = Vector2(157.24, 16.1232)
+scale = Vector2(0.655, 0.655)
+texture = ExtResource("5_al2bx")
+region_enabled = true
+region_rect = Rect2(16, 96, 480, 48)
+
+[node name="MediumHit" type="Sprite2D" parent="."]
+position = Vector2(157.24, 16.1232)
+scale = Vector2(0.655, 0.655)
+texture = ExtResource("4_4hq8n")
+region_enabled = true
+region_rect = Rect2(16, 96, 480, 48)
+
+[node name="PerfectHit" type="Sprite2D" parent="."]
+position = Vector2(157.24, 16.1232)
+rotation = -0.00256522
+scale = Vector2(0.655, 0.655)
+texture = ExtResource("3_4qr4b")
+region_enabled = true
+region_rect = Rect2(16, 96, 480, 48)
+
+[node name="StrikeTimer" type="Timer" parent="."]
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_top = 48.2474
+offset_right = 314.0
+offset_bottom = 64.2474
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(311.707, 39.4264)
+rotation = -1.57079
+scale = Vector2(0.356705, 0.438135)
+texture = ExtResource("2_jleyk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fdl3h")
+}
+
+[connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout"]
