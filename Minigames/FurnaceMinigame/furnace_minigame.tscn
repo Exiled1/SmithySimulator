@@ -17,10 +17,9 @@ position = Vector2(580.625, 328)
 script = ExtResource("1_55ad2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = -0.400024
-offset_top = 0.000274658
-offset_right = 34.6
+offset_right = 35.0
 offset_bottom = 287.0
+size_flags_horizontal = 0
 theme_override_constants/separation = 0
 
 [node name="Control2" type="Control" parent="HBoxContainer"]

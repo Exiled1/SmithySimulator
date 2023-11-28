@@ -1,15 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://feg8r2d4ngf6"]
+[gd_scene load_steps=10 format=3 uid="uid://feg8r2d4ngf6"]
 
 [ext_resource type="Script" path="res://Minigames/AnvilMinigame/AnvilMinigame.gd" id="1_q7et4"]
+[ext_resource type="Texture2D" uid="uid://bfv35g6if2jap" path="res://Minigames/AnvilMinigame/redbar2.png" id="2_d64nk"]
 [ext_resource type="Texture2D" uid="uid://np62v3s8hkiq" path="res://Minigames/AnvilMinigame/pointer.png" id="2_jleyk"]
-[ext_resource type="Texture2D" uid="uid://bltcxk7prsboq" path="res://Minigames/AnvilMinigame/GreenBackground.png" id="3_4qr4b"]
-[ext_resource type="Texture2D" uid="uid://cq2y5x174rl3b" path="res://Minigames/AnvilMinigame/OrangeBackground.png" id="4_4hq8n"]
-[ext_resource type="Texture2D" uid="uid://3ing4ixoma4v" path="res://Minigames/AnvilMinigame/RedBackground.png" id="5_al2bx"]
-[ext_resource type="Texture2D" uid="uid://xmoriuojxmw" path="res://Minigames/AnvilMinigame/GameBackground.png" id="6_knlbj"]
+[ext_resource type="Script" path="res://Minigames/AnvilMinigame/PerfectMediumStrike.gd" id="5_55joc"]
+[ext_resource type="Texture2D" uid="uid://b66oht76mk1w3" path="res://Minigames/AnvilMinigame/orangebar2.png" id="6_ctamf"]
+[ext_resource type="Texture2D" uid="uid://clkh0800412b6" path="res://Minigames/AnvilMinigame/background2.png" id="7_g88gg"]
+[ext_resource type="Texture2D" uid="uid://hlgiptskg2qs" path="res://Minigames/AnvilMinigame/GreenBar2.png" id="8_i5iv4"]
 
 [sub_resource type="Animation" id="Animation_5lpr0"]
 resource_name = "Slider"
 length = 3.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,7 +19,7 @@ tracks/0/path = NodePath("Arrow:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 3.5),
+"times": PackedFloat32Array(0, 3.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(4.24366, 39.2281), Vector2(311.707, 39.4264)]
@@ -29,6 +31,8 @@ _data = {
 }
 
 [node name="AnvilMinigame" type="Node2D"]
+position = Vector2(-215.203, -51.9131)
+scale = Vector2(1.79861, 1.9172)
 script = ExtResource("1_q7et4")
 
 [node name="Control" type="Control" parent="."]
@@ -36,53 +40,51 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 315.0
 offset_bottom = 32.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 0.324936
-offset_top = -28.0803
-offset_right = 315.325
-offset_bottom = -1.08026
+offset_left = 1.60042
+offset_top = -126.354
+offset_right = 316.6
+offset_bottom = -99.3541
 value = 23.32
 show_percentage = false
-
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(157.525, 15.9214)
-scale = Vector2(0.655, 0.655)
-texture = ExtResource("6_knlbj")
-region_enabled = true
-region_rect = Rect2(16, 96, 480, 48)
+metadata/_edit_use_anchors_ = true
 
 [node name="BadHit" type="Sprite2D" parent="."]
-position = Vector2(157.24, 16.1232)
-scale = Vector2(0.655, 0.655)
-texture = ExtResource("5_al2bx")
+position = Vector2(16.3624, 86.5702)
+scale = Vector2(0.264176, 0.655)
+texture = ExtResource("2_d64nk")
 region_enabled = true
 region_rect = Rect2(16, 96, 480, 48)
 
-[node name="MediumHit" type="Sprite2D" parent="."]
-position = Vector2(157.24, 16.1232)
-scale = Vector2(0.655, 0.655)
-texture = ExtResource("4_4hq8n")
-region_enabled = true
-region_rect = Rect2(16, 96, 480, 48)
-
-[node name="PerfectHit" type="Sprite2D" parent="."]
-position = Vector2(157.24, 16.1232)
-rotation = -0.00256522
-scale = Vector2(0.655, 0.655)
-texture = ExtResource("3_4qr4b")
+[node name="BadHit2" type="Sprite2D" parent="."]
+position = Vector2(215.259, 86.9183)
+scale = Vector2(0.264176, 0.655)
+texture = ExtResource("2_d64nk")
 region_enabled = true
 region_rect = Rect2(16, 96, 480, 48)
 
 [node name="StrikeTimer" type="Timer" parent="."]
 
 [node name="HSlider" type="HSlider" parent="."]
-offset_top = 48.2474
+offset_top = -149.515
 offset_right = 314.0
-offset_bottom = 64.2474
+offset_bottom = -133.515
+max_value = 1000.0
+value = 500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HSlider2" type="HSlider" parent="."]
+offset_top = -149.515
+offset_right = 314.0
+offset_bottom = -133.515
+max_value = 1000.0
+value = 700.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Arrow" type="Sprite2D" parent="."]
-position = Vector2(311.707, 39.4264)
+position = Vector2(21.6116, 59.7247)
 rotation = -1.57079
 scale = Vector2(0.356705, 0.438135)
 texture = ExtResource("2_jleyk")
@@ -91,5 +93,54 @@ texture = ExtResource("2_jleyk")
 libraries = {
 "": SubResource("AnimationLibrary_fdl3h")
 }
+
+[node name="PerfectMediumStrike" type="Node2D" parent="."]
+position = Vector2(119.65, 27.0776)
+script = ExtResource("5_55joc")
+
+[node name="BackgroundContainer" type="Node2D" parent="PerfectMediumStrike"]
+metadata/_edit_group_ = true
+
+[node name="Background" type="Sprite2D" parent="PerfectMediumStrike/BackgroundContainer"]
+unique_name_in_owner = true
+scale = Vector2(0.68606, 0.687264)
+texture = ExtResource("7_g88gg")
+
+[node name="MediumRightContainer" type="Node2D" parent="PerfectMediumStrike"]
+position = Vector2(-3.70752, 100.94)
+scale = Vector2(0.682926, 0.655)
+metadata/_edit_group_ = true
+
+[node name="MediumHitRight" type="Sprite2D" parent="PerfectMediumStrike/MediumRightContainer"]
+unique_name_in_owner = true
+texture = ExtResource("6_ctamf")
+region_enabled = true
+region_rect = Rect2(16, 96, 480, 48)
+
+[node name="MediumLeftContainer" type="Node2D" parent="PerfectMediumStrike"]
+position = Vector2(-5.19182, 149.412)
+scale = Vector2(0.682926, 0.655)
+metadata/_edit_group_ = true
+
+[node name="MediumHitLeft" type="Sprite2D" parent="PerfectMediumStrike/MediumLeftContainer"]
+unique_name_in_owner = true
+texture = ExtResource("6_ctamf")
+region_enabled = true
+region_rect = Rect2(16, 96, 480, 48)
+
+[node name="PerfectHitContainer" type="Node2D" parent="PerfectMediumStrike"]
+position = Vector2(0.053919, -0.136743)
+scale = Vector2(0.682926, 0.655)
+metadata/_edit_group_ = true
+
+[node name="PerfectHit" type="Sprite2D" parent="PerfectMediumStrike/PerfectHitContainer"]
+unique_name_in_owner = true
+skew = 0.000214219
+texture = ExtResource("8_i5iv4")
+region_enabled = true
+region_rect = Rect2(16, 96, 480, 48)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(119.65, 27.0776)
 
 [connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout"]
