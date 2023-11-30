@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://feg8r2d4ngf6"]
+[gd_scene load_steps=15 format=3 uid="uid://feg8r2d4ngf6"]
 
 [ext_resource type="Script" path="res://Minigames/AnvilMinigame/AnvilMinigame.gd" id="1_q7et4"]
 [ext_resource type="Texture2D" uid="uid://bfv35g6if2jap" path="res://Minigames/AnvilMinigame/redbar2.png" id="2_d64nk"]
@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://b66oht76mk1w3" path="res://Minigames/AnvilMinigame/orangebar2.png" id="6_ctamf"]
 [ext_resource type="Texture2D" uid="uid://clkh0800412b6" path="res://Minigames/AnvilMinigame/background2.png" id="7_g88gg"]
 [ext_resource type="Texture2D" uid="uid://hlgiptskg2qs" path="res://Minigames/AnvilMinigame/GreenBar2.png" id="8_i5iv4"]
+[ext_resource type="PackedScene" uid="uid://cjnudgfkhed6c" path="res://Assets/ModelAssets/d1/anvil.glb" id="8_vdb6k"]
+[ext_resource type="PackedScene" uid="uid://soyqdvafdhfj" path="res://Assets/ModelAssets/d1/hammer.glb" id="9_firvk"]
+[ext_resource type="PackedScene" uid="uid://bvqqcywb6o210" path="res://Assets/ModelAssets/d1/ingot.glb" id="10_aex3h"]
+[ext_resource type="PackedScene" uid="uid://dtjplv0qfuyq" path="res://Assets/ModelAssets/d1/forge-tongs.glb" id="11_txam2"]
+[ext_resource type="Texture2D" uid="uid://beafcpoas8v4e" path="res://Assets/ImageAssets/d1/ring_spritesheet.png" id="12_050s2"]
 
 [sub_resource type="Animation" id="Animation_5lpr0"]
 resource_name = "Slider"
@@ -103,10 +108,12 @@ metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="PerfectMediumStrike/BackgroundContainer"]
 unique_name_in_owner = true
+visibility_layer = 0
 scale = Vector2(0.68606, 0.687264)
 texture = ExtResource("7_g88gg")
 
 [node name="MediumRightContainer" type="Node2D" parent="PerfectMediumStrike"]
+unique_name_in_owner = true
 position = Vector2(-3.70752, 100.94)
 scale = Vector2(0.682926, 0.655)
 metadata/_edit_group_ = true
@@ -118,6 +125,7 @@ region_enabled = true
 region_rect = Rect2(16, 96, 480, 48)
 
 [node name="MediumLeftContainer" type="Node2D" parent="PerfectMediumStrike"]
+unique_name_in_owner = true
 position = Vector2(-5.19182, 149.412)
 scale = Vector2(0.682926, 0.655)
 metadata/_edit_group_ = true
@@ -129,7 +137,8 @@ region_enabled = true
 region_rect = Rect2(16, 96, 480, 48)
 
 [node name="PerfectHitContainer" type="Node2D" parent="PerfectMediumStrike"]
-position = Vector2(0.053919, -0.136743)
+unique_name_in_owner = true
+position = Vector2(2.27786, 21.7702)
 scale = Vector2(0.682926, 0.655)
 metadata/_edit_group_ = true
 
@@ -142,5 +151,21 @@ region_rect = Rect2(16, 96, 480, 48)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(119.65, 27.0776)
+
+[node name="anvil" parent="." instance=ExtResource("8_vdb6k")]
+transform = Transform3D(7.18, 0, 0, 0, 7.18, 0, 0, 0, 7.18, -0.458537, 0.452131, 0.0361821)
+
+[node name="hammer" parent="." instance=ExtResource("9_firvk")]
+transform = Transform3D(7.18, 0, 0, 0, 7.18, 0, 0, 0, 7.18, -0.724328, 0.552712, 0.227337)
+
+[node name="ingot" parent="." instance=ExtResource("10_aex3h")]
+transform = Transform3D(9.34, 0, 0, 0, 9.34, 0, 0, 0, 9.34, -0.433808, 0.499051, 0.0425748)
+
+[node name="forge-tongs" parent="." instance=ExtResource("11_txam2")]
+transform = Transform3D(3.77, 0, 0, 0, 3.77, 0, 0, 0, 3.77, 0.875819, 0.714367, -0.359767)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.185, 0, 0, 0, -8.08661e-09, -0.185, 0, 0.185, -8.08661e-09, 0, 1.16804, 0)
+texture = ExtResource("12_050s2")
 
 [connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout"]
